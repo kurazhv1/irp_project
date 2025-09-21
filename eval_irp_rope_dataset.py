@@ -45,7 +45,11 @@ def main(cfg: DictConfig) -> None:
     action_scale = np.array(root[cfg.setup.name].shape[2:5])
 
     # load action model
-    device = torch.device('cuda', cfg.action.gpu_id)
+    if cfg.action.gpu_id >= 0 and torch.cuda.is_available():
+        device = torch.device('cuda', cfg.action.gpu_id)
+    else:
+        device = torch.device('cpu')
+        print(f"Using CPU for inference (CUDA not available or gpu_id={cfg.action.gpu_id})")
     dtype = torch.float16 if cfg.action.use_fp16 else torch.float32
     sampler = DeltaActionGaussianSampler(**cfg.action.sampler)
     action_model = DeltaTrajectoryDeeplab.load_from_checkpoint(
