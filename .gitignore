@@ -1,0 +1,82 @@
+# IRP Reverse Engineering - .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyTorch
+*.pth
+*.pt
+checkpoints/
+lightning_logs/
+
+# Data files
+data/
+*.zarr/
+*.zarr.tar
+*.pkl
+*.h5
+*.hdf5
+
+# Conda/Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and output
+*.log
+outputs/
+wandb/
+.hydra/
+
+# MuJoCo
+*.mjcf
+*.xml.backup
+
+# Camera calibration
+calibration.pkl
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
