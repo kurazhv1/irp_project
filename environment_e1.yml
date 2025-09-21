@@ -1,0 +1,35 @@
+name: irp
+channels:
+  - conda-forge
+channel_priority: strict
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - scikit-image
+  - imageio
+  - tifffile
+  - zarr
+  - numcodecs
+  - dask-core
+  - toolz
+  - hdf5
+  - cytoolz
+  - pywavelets
+  - pyyaml
+  - requests
+  - tqdm
+  - hydra-core
+  - omegaconf
+  - jinja2
+  - psutil
+  - networkx
+  - pillow
+  - pip:
+      - pytorch-lightning==2.4.*
+      - torchmetrics==1.4.*
+      - wandb==0.17.*
+      - opencv-python-headless==4.10.*
