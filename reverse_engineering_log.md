@@ -215,3 +215,74 @@ git branch -a
 
 **URL:** https://github.com/kurazhv1/irp_project
 **Все reverse engineering изменения сохранены и готовы к работе!**
+
+## 🐳 NEXT PHASE: Docker Containerization Plan
+
+### 📋 Docker Strategy (После тестирования обеих environment):
+
+#### Phase 1: Legacy Docker Container (E0)
+```dockerfile
+# irp-legacy:latest
+FROM nvidia/cuda:11.1-devel-ubuntu20.04
+# Python 3.8 + PyTorch 1.9.0+CUDA + mujoco-py 2.1.2.14
+# Полная совместимость с оригинальным проектом
+```
+
+#### Phase 2: Modern Docker Container (E1)  
+```dockerfile
+# irp-modern:latest
+FROM nvidia/cuda:12.2-devel-ubuntu22.04
+# Python 3.10 + PyTorch 2.8 + MuJoCo 3.3.6
+# Современная версия с улучшенной производительностью
+```
+
+### 🎯 Docker Features:
+- **GPU Support**: NVIDIA runtime для CUDA
+- **Volume Mounting**: Для данных и результатов
+- **Jupyter Integration**: Для интерактивной работы
+- **SSH Access**: Для удаленного доступа
+- **Port Forwarding**: Для wandb и веб-интерфейсов
+
+### 📦 Deliverables:
+1. `Dockerfile.legacy` - Legacy окружение
+2. `Dockerfile.modern` - Modern окружение  
+3. `docker-compose.yml` - Оркестрация контейнеров
+4. `run_remote.sh` - Скрипт для запуска на удаленной машине
+5. **Docker Hub Images**: Готовые к использованию контейнеры
+
+### 🚀 Remote Deployment:
+```bash
+# На удаленной машине:
+docker pull kurazhv1/irp-legacy:latest
+docker pull kurazhv1/irp-modern:latest
+docker-compose up -d
+# Готово к работе!
+```
+
+**Цель**: Полная портируемость и воспроизводимость на любой машине с Docker + GPU
+
+## 📊 UPDATED ROADMAP (11 октября 2025)
+
+### ✅ COMPLETED:
+- [x] Legacy Environment (E0) - FULLY FUNCTIONAL
+- [x] Data Pipeline - ALL DATASETS READY
+- [x] Git Strategy - IMPLEMENTED
+- [x] Basic Evaluation - WORKING
+
+### 🔄 IN PROGRESS:
+- [ ] Visualization Fix (segfault issue)
+- [ ] Modern Environment Testing (E1)
+
+### 📋 TODO (приоритизировано):
+1. **Fix MuJoCo Visualization** (High)
+2. **Test Modern Environment** (Medium)  
+3. **🐳 Docker Containerization** (Medium-High)
+4. **Performance Comparison** (Low)
+5. **Documentation Cleanup** (Low)
+
+### 🎯 NEXT SESSION GOALS:
+1. Commit current changes to legacy branch
+2. Fix visualization or implement offscreen rendering
+3. Begin Docker strategy planning
+
+**PROGRESS: ~85% Complete** 🚀
