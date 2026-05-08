@@ -1,3 +1,6 @@
+# IRP Reverse Engineering - Combined .gitignore
+
+# Project-specific exclusions
 .vscode
 data
 outputs
@@ -115,6 +118,28 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.conda/
+
+# PyTorch specific
+*.pth
+*.pt
+checkpoints/
+lightning_logs/
+
+# Data files
+data/
+*.zarr/
+*.zarr.tar
+*.pkl
+*.h5
+*.hdf5
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
 # Spyder project settings
 .spyderproject
@@ -133,3 +158,30 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and output
+*.log
+outputs/
+wandb/
+.hydra/
+
+# MuJoCo
+*.mjcf
+*.xml.backup
+
+# Camera calibration
+calibration.pkl
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

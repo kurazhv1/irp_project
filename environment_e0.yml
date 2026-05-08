@@ -1,0 +1,54 @@
+# Environment E0 - Legacy окружение с оригинальными версиями
+# Основано на оригинальном environment.yml от авторов IRP
+# Python 3.8, PyTorch 1.9.0, CUDA 11.2
+
+name: irp_legacy
+channels:
+  - conda-forge
+  - pytorch
+  - defaults
+
+dependencies:
+  # Core Python
+  - python=3.8
+  
+  # Scientific computing
+  - numpy=1.21.6
+  - scipy=1.7.3
+  - matplotlib=3.5.3
+  - seaborn=0.11.2
+  
+  # Machine Learning
+  - pytorch=1.9.0
+  - torchvision=0.10.0
+  - cudatoolkit=11.2
+  - pytorch-lightning=1.4.9
+  
+  # Image processing
+  - imageio=2.19.3
+  - scikit-image=0.19.3
+  - pillow=9.2.0
+  
+  # Data handling
+  - zarr=2.12.0
+  - pandas=1.4.4
+  - h5py=3.7.0
+  
+  # Utilities
+  - tqdm=4.64.1
+  - pyyaml=6.0
+  - jinja2=3.1.2
+  - hydra-core=1.2.0
+  - omegaconf=2.2.3
+  
+  # Development
+  - jupyter=1.0.0
+  - ipywidgets=8.0.2
+  
+  # Pip dependencies (установятся после conda)
+  - pip
+  - pip:
+    - opencv-python==4.6.0.66
+    - wandb==0.13.3
+    # mujoco-py==2.0.2.7  # Установим отдельно после получения лицензии
+    # abr_control         # Установим отдельно через git
