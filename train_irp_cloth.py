@@ -6,6 +6,7 @@ import yaml
 import hydra
 from omegaconf import DictConfig, OmegaConf
 import pytorch_lightning as pl
+from hydra.utils import to_absolute_path
 
 from datasets.cloth_delta_gaussian_dataset import ClothDeltaGaussianDataModule
 from networks.cloth_delta_deeplab import ClothDeltaDeeplab
@@ -20,7 +21,12 @@ def main(cfg: DictConfig) -> None:
     print(os.getcwd())
     os.mkdir("checkpoints")
 
-    datamodule = ClothDeltaGaussianDataModule(**cfg.datamodule)
+    # Fix zarr_path to be absolute BEFORE creating datamodule
+    datamodule_cfg = OmegaConf.to_container(cfg.datamodule, resolve=True)
+    datamodule_cfg['zarr_path'] = to_absolute_path(datamodule_cfg['zarr_path'])
+    print(f"DEBUG: zarr_path = {datamodule_cfg['zarr_path']}")
+    
+    datamodule = ClothDeltaGaussianDataModule(**datamodule_cfg)
     cfg.model.action_sigma = cfg.datamodule.action_sigma
     model = ClothDeltaDeeplab(**cfg.model)
 
@@ -53,12 +59,13 @@ def main(cfg: DictConfig) -> None:
         save_weights_only=False, 
         every_n_epochs=1,
         save_on_train_epoch_end=True)
-    vis_callback = ImageGridCallback(
-        val_dataset,
-        **cfg.vis_callback
-    )
+    # Temporarily disable vis_callback due to PIL import issue
+    # vis_callback = ImageGridCallback(
+    #     val_dataset,
+    #     **cfg.vis_callback
+    # )
     trainer = pl.Trainer(
-        callbacks=[checkpoint_callback, vis_callback],
+        callbacks=[checkpoint_callback],  # Removed vis_callback
         checkpoint_callback=True,
         logger=logger, 
         **cfg.trainer)

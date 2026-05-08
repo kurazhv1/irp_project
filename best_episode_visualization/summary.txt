@@ -1,0 +1,28 @@
+
+======================================================================
+BEST EPISODE SUMMARY
+======================================================================
+
+Episode ID: 20251201_130443_rope4_goal5
+Final Loss: 1.57 cm  (BEST out of 55 episodes)
+
+Trajectory Statistics:
+  Total Actions: 32
+  Total Path Length: 19.287 m
+  Mean Step Size: 0.6222 m
+  Max Step Size: 0.7515 m
+  Min Step Size: 0.5921 m
+
+Goal Configuration:
+  Number of Points: 9 (3×3 grid)
+  Goal Center: (0.000, 0.915, 0.007)
+  Goal X range: [-0.215, 0.215]
+  Goal Y range: [0.700, 1.130]
+  Goal Z range: [0.007, 0.007]
+
+Start Position: (0.000, 0.715, 0.860)
+End Position: (0.000, 0.050, 0.697)
+
+Final Distance to Goal Center: 1.1067 m
+
+======================================================================

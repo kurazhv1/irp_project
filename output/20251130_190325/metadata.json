@@ -1,0 +1,17 @@
+{
+  "timestamp": "20251130_190325",
+  "n_episodes": 1,
+  "rope_configs": [
+    {
+      "table_height": 0.8,
+      "table_y": 1,
+      "table_size": 1.2,
+      "cloth_spacing": 0.05,
+      "cloth_density": 1.4
+    }
+  ],
+  "goal_alphas": [
+    0.5
+  ],
+  "test_mode": true
+}

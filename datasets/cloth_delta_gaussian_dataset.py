@@ -114,10 +114,11 @@ class ClothDeltaGaussianDataModule(pl.LightningDataModule):
 
     def prepare_data(self):
         kwargs = self.kwargs
-        zarr_path = os.path.expanduser(
-            to_absolute_path(kwargs['zarr_path']))
-        print(zarr_path)
-        root = zarr.open(zarr_path, 'r')
+        zarr_path = os.path.expanduser(kwargs['zarr_path'])
+        print(f"Loading zarr from: {zarr_path}")
+        # Use DirectoryStore instead of zarr.open() due to bug in zarr 2.12.0
+        store = zarr.DirectoryStore(zarr_path)
+        root = zarr.group(store=store)
 
         is_setup_valid = root['is_valid'][:]
         self.is_setup_valid = is_setup_valid
